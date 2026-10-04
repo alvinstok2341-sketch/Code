@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Happy Birthday ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff5f7;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           BACKGROUND
+        ========================= */
+
+        .background {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            font-size: 20px;
+            opacity: 0.6;
+            animation: naik 8s linear infinite;
+        }
+
+        .heart:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .heart:nth-child(2) {
+            left: 30%;
+            animation-delay: 2s;
+        }
+
+        .heart:nth-child(3) {
+            left: 50%;
+            animation-delay: 4s;
+        }
+
+        .heart:nth-child(4) {
+            left: 70%;
+            animation-delay: 1s;
+        }
+
+        .heart:nth-child(5) {
+            left: 90%;
+            animation-delay: 3s;
+        }
+
+        @keyframes naik {
+            0% {
+                transform: translateY(0) rotate(0);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* =========================
+           OPENING
+        ========================= */
+
+        .opening {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 25px;
+
+            background:
+                radial-gradient(circle at top, #ffdce5, transparent 50%),
+                linear-gradient(135deg, #ff9aaf, #ffcad4);
+        }
+
+        .opening-content {
+            position: relative;
+            z-index: 2;
+            max-width: 650px;
+            animation: muncul 1.5s ease;
+        }
+
+        .big-heart {
+            font-size: 90px;
+            animation: detak 1.4s infinite;
+        }
+
+        .opening h1 {
+            font-size: clamp(42px, 8vw, 80px);
+            color: white;
+            margin: 20px 0 10px;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .opening p {
+            color: white;
+            font-size: 20px;
+            margin-bottom: 35px;
+        }
+
+        .main-button {
+            display: inline-block;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            background: white;
+            color: #ff5f7e;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: 0.3s;
+        }
+
+        .main-button:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        @keyframes detak {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes muncul {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           SECTION
+        ========================= */
+
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 90px 20px;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 38px;
+            color: #e94f70;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            color: #777;
+            max-width: 600px;
+            margin: auto;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           SURAT
+        ========================= */
+
+        .letter-section {
+            background: #fff;
+        }
+
+        .letter {
+            max-width: 700px;
+            margin: 40px auto 0;
+            background: #fffaf0;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            text-align: left;
+            border: 2px solid #ffe0e7;
+
+            opacity: 0;
+            transform: translateY(50px);
+            transition: 1s;
+        }
+
+        .letter.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .letter h3 {
+            color: #e94f70;
+            margin-bottom: 20px;
+            font-size: 25px;
+        }
+
+        .letter p {
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+
+        .signature {
+            margin-top: 25px;
+            text-align: right;
+            color: #e94f70;
+            font-weight: bold;
+        }
+
+        /* =========================
+           GALERI
+        ========================= */
+
+        .gallery-section {
+            background: #fff5f7;
+        }
+
+        .gallery {
+            max-width: 1000px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .photo {
+            height: 300px;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            cursor: pointer;
+            background: #ffdce5;
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .photo:hover img {
+            transform: scale(1.1);
+        }
+
+        /* =========================
+           SURPRISE
+        ========================= */
+
+        .surprise-section {
+            background:
+                linear-gradient(135deg, #ff8fa3, #ffb6c5);
+            color: white;
+        }
+
+        .surprise-section .title {
+            color: white;
+        }
+
+        .surprise-message {
+            max-width: 650px;
+            margin: 30px auto;
+            font-size: 22px;
+            line-height: 1.8;
+            min-height: 80px;
+        }
+
+        .surprise-button {
+            padding: 16px 35px;
+            border: none;
+            border-radius: 50px;
+            background: white;
+            color: #e94f70;
+            font-weight: bold;
+            font-size: 17px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .surprise-button:hover {
+            transform: scale(1.08);
+        }
+
+        /* =========================
+           FINAL
+        ========================= */
+
+        .final-section {
+            min-height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+        }
+
+        .final-content {
+            max-width: 700px;
+        }
+
+        .final-content h2 {
+            font-size: 45px;
+            color: #e94f70;
+            margin-bottom: 20px;
+        }
+
+        .final-content p {
+            font-size: 19px;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        .final-heart {
+            font-size: 70px;
+            margin-top: 30px;
+            animation: detak 1.5s infinite;
+        }
+
+        /* =========================
+           MUSIC BUTTON
+        ========================= */
+
+        .music-button {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 55px;
+            height: 55px;
+            border: none;
+            border-radius: 50%;
+            background: #e94f70;
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        /* =========================
+           CONFETTI
+        ========================= */
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            top: -20px;
+            z-index: 9999;
+            animation: jatuh 3s linear forwards;
+        }
+
+        @keyframes jatuh {
+            to {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* =========================
+           RESPONSIVE HP
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .opening h1 {
+                font-size: 45px;
+            }
+
+            .opening p {
+                font-size: 16px;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .photo {
+                height: 220px;
+            }
+
+            .letter {
+                padding: 25px;
+            }
+
+            .title {
+                font-size: 30px;
+            }
+
+            .final-content h2 {
+                font-size: 35px;
+            }
+        }
+
+        @media (max-width: 450px) {
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .photo {
+                height: 350px;
+            }
+        }
+        /* =========================
+   TAMPILAN KHUSUS HP
+========================= */
+
+@media (max-width: 600px) {
+
+    body {
+        font-size: 15px;
+        overflow-x: hidden;
+    }
+
+    .container {
+        width: 90%;
+        margin: auto;
+    }
+
+    h1 {
+        font-size: 42px;
+        line-height: 1.1;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    p {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    button {
+        width: 85%;
+        max-width: 300px;
+        padding: 14px 20px;
+        font-size: 15px;
+        border-radius: 30px;
+    }
+
+    /* Bagian pembuka */
+    .hero {
+        min-height: 100vh;
+        padding: 30px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* Judul */
+    .hero h1 {
+        font-size: 43px;
+        margin-bottom: 15px;
+    }
+
+    .hero p {
+        font-size: 16px;
+        padding: 0 10px;
+    }
+
+    /* Surat / ucapan */
+    .letter {
+        width: 100%;
+        padding: 25px 20px;
+        border-radius: 20px;
+        box-sizing: border-box;
+    }
+
+    /* Galeri foto */
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 10px;
+    }
+
+    .photo {
+        width: 100%;
+        height: 180px;
+        overflow: hidden;
+        border-radius: 15px;
+    }
+
+    .photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* Tombol musik */
+    #musicBtn {
+        position: fixed;
+        right: 15px;
+        bottom: 15px;
+        width: 52px;
+        height: 52px;
+        padding: 0;
+        border-radius: 50%;
+        z-index: 999;
+    }
+
+    /* Bagian kejutan */
+    #surpriseMessage {
+        margin: 20px 5px;
+        padding: 20px;
+        border-radius: 18px;
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    /* Jarak antar section */
+    section {
+        padding: 60px 15px;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HATI BACKGROUND
+    ========================= -->
+
+    <div class="background">
+        <div class="heart">❤️</div>
+        <div class="heart">💗</div>
+        <div class="heart">💕</div>
+        <div class="heart">💖</div>
+        <div class="heart">❤️</div>
+    </div>
+
+
+    <!-- =========================
+         OPENING
+    ========================= -->
+
+    <section class="opening">
+
+        <div class="opening-content">
+
+            <div class="big-heart">❤️</div>
+
+            <h1>Happy Birthday!</h1>
+
+            <p>
+                Untuk seseorang yang sangat spesial ✨
+            </p>
+
+            <a href="#surat" class="main-button">
+                💌 Buka Ucapan
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SURAT
+    ========================= -->
+
+    <section class="letter-section" id="surat">
+
+        <h2 class="title">
+            💌 Sebuah Surat
+        </h2>
+
+        <p class="subtitle">
+            Ada sedikit pesan yang ingin disampaikan di hari yang spesial ini.
+        </p>
+
+        <div class="letter" id="letter">
+
+            <h3>Happy Birthday! 🎂</h3>
+
+            <p>
+                Selamat ulang tahun untuk seseorang yang begitu berarti.
+                Semoga di usia yang baru ini, semakin banyak hal baik yang datang
+                dan semakin banyak alasan untuk tersenyum.
+            </p>
+
+            <p>
+                Semoga semua impian dan harapan yang sedang diperjuangkan
+                perlahan bisa menjadi kenyataan. Jangan takut untuk terus
+                melangkah dan menjadi versi terbaik dari diri sendiri.
+            </p>
+
+            <p>
+                Terima kasih untuk semua cerita, tawa, dan kenangan indah
+                yang sudah tercipta. Semoga hari ini menjadi salah satu
+                hari yang tidak terlupakan. ❤️
+            </p>
+
+            <p>
+                Sekali lagi, selamat ulang tahun.
+                Semoga kebahagiaan selalu menyertai setiap langkahmu.
+            </p>
+
+            <div class="signature">
+                With love ❤️
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         GALERI
+    ========================= -->
+
+    <section class="gallery-section">
+
+        <h2 class="title">
+            📸 Our Memories
+        </h2>
+
+        <p class="subtitle">
+            Beberapa kenangan yang bisa selalu dikenang.
+        </p>
+
+        <div class="gallery">
+
+            <div class="photo">
+                <img src="foto/Foto1.png" alt="Kenangan 1">
+            </div>
+
+            <div class="photo">
+                <img src="foto/Foto2.png" alt="Kenangan 2">
+            </div>
+
+            <div class="photo">
+                <img src="foto/foto3.jpeg" alt="Kenangan 3">
+            </div>
+
+            <div class="photo">
+                <img src="foto/foto4.jpeg" alt="Kenangan 4">
+            </div>
+
+            <div class="photo">
+                <img src="foto/foto5.jpeg" alt="Kenangan 5">
+            </div>
+
+            <div class="photo">
+                <img src="foto/foto6.jpeg" alt="Kenangan 6">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SURPRISE
+    ========================= -->
+
+    <section class="surprise-section">
+
+        <h2 class="title">
+            🎁 One More Thing...
+        </h2>
+
+        <p class="subtitle" style="color:white;">
+            Ada satu kejutan kecil yang menunggu.
+        </p>
+
+        <div class="surprise-message" id="surpriseMessage">
+            Klik tombol di bawah untuk melihatnya ❤️
+        </div>
+
+        <button class="surprise-button" onclick="surprise()">
+            🎉 Surprise!
+        </button>
+
+    </section>
+
+
+    <!-- =========================
+         FINAL
+    ========================= -->
+
+    <section class="final-section">
+
+        <div class="final-content">
+
+            <h2>
+                Once Again... 🎂
+            </h2>
+
+            <p>
+                Semoga hari ulang tahun ini membawa banyak kebahagiaan,
+                cerita baru, dan kenangan yang indah.
+                Teruslah tersenyum dan jangan berhenti mengejar
+                hal-hal yang diimpikan. ✨
+            </p>
+
+            <div class="final-heart">
+                ❤️
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MUSIC
+    ========================= -->
+
+    <audio id="music" loop>
+        <source src="musik/lagu.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="music-button" onclick="toggleMusic()" id="musicButton">
+        🎵
+    </button>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        /* =========================
+           SURAT MUNCUL SAAT SCROLL
+        ========================= */
+
+        const letter = document.getElementById("letter");
+
+        window.addEventListener("scroll", function() {
+
+            const posisi = letter.getBoundingClientRect().top;
+            const tinggiLayar = window.innerHeight;
+
+            if (posisi < tinggiLayar - 100) {
+                letter.classList.add("show");
+            }
+
+        });
+
+
+        /* =========================
+           MUSIK
+        ========================= */
+
+        const music = document.getElementById("music");
+        const musicButton = document.getElementById("musicButton");
+
+        let sedangMain = false;
+
+        function toggleMusic() {
+
+            if (sedangMain) {
+
+                music.pause();
+
+                musicButton.innerHTML = "🎵";
+
+                sedangMain = false;
+
+            } else {
+
+                music.play();
+
+                musicButton.innerHTML = "⏸️";
+
+                sedangMain = true;
+
+            }
+
+        }
+
+
+        /* =========================
+           SURPRISE
+        ========================= */
+
+        function surprise() {
+
+            const message =
+                "🎉 Selamat ulang tahun! Semoga hari ini menjadi awal dari banyak kebahagiaan, pencapaian, dan cerita indah yang baru. ❤️";
+
+            document.getElementById("surpriseMessage").innerHTML = message;
+
+            buatConfetti();
+
+        }
+
+
+        /* =========================
+           CONFETTI
+        ========================= */
+
+        function buatConfetti() {
+
+            for (let i = 0; i < 100; i++) {
+
+                const confetti = document.createElement("div");
+
+                confetti.classList.add("confetti");
+
+                confetti.style.left =
+                    Math.random() * 100 + "vw";
+
+                confetti.style.animationDuration =
+                    (Math.random() * 2 + 2) + "s";
+
+                confetti.style.backgroundColor =
+                    warnaAcak();
+
+                confetti.style.width =
+                    (Math.random() * 8 + 5) + "px";
+
+                confetti.style.height =
+                    (Math.random() * 8 + 5) + "px";
+
+                document.body.appendChild(confetti);
+
+                setTimeout(function() {
+
+                    confetti.remove();
+
+                }, 4000);
+
+            }
+
+        }
+
+
+        function warnaAcak() {
+
+            const warna = [
+                "#ff4f70",
+                "#ffb6c1",
+                "#ffd166",
+                "#ffffff",
+                "#c77dff",
+                "#90dbf4"
+            ];
+
+            return warna[
+                Math.floor(Math.random() * warna.length)
+            ];
+
+        }
+
+    </script>
+
+</body>
+</html>
